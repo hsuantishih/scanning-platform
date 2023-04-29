@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create_Target_Complete</title>
+</head>
+<body>
+    <h3>Create Target Response</h3>
+    <pre>{{ target_response }}</pre>
+    <hr>
+    <h3>Create Task</h3>
+    <form method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="target_id">Target_id:</label>
+        <input type="text" name="target_id" id="target_id" placeholder="{{ id }}" value="{{ id }}">
+        <br>
+        <label for="config_id">Config_id:</label>
+        <select name="config_id">
+            <option value="d21f6c81-2b88-4ac1-b7b4-a2a9f2ad4663">Base</option>
+            <option value="8715c877-47a0-438d-98a3-27c7a6ab2196">Discovery</option>
+            <option value="085569ce-73ed-11df-83c3-002264764cea">empty</option>
+            <option value="daba56c8-73ec-11df-a475-002264764cea">Full and fast</option>
+            <option value="2d3f051c-55ba-11e3-bf43-406186ea4fc5">Host Discovery</option>
+            <option value="e3efebc5-fc0d-4cb6-b1b4-55309d0a89f6">Log4Shell</option>
+            <option value="bbca7412-a950-11e3-9109-406186ea4fc5">System Discovery</option>
+        </select>
+        <br>
+        <input type="submit" value="Create Task">
+    </form>
+</body>
+</html>

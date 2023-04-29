@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version</title>
+</head>
+<body>
+    <h3>GVM-CLI Version</h3>
+    <pre>{{ response }}</pre>
+    <hr>
+    <h3>Create Target</h3>
+    <form method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="comment">Comment:</label>
+        <input type="text" name="comment" id="comment">
+        <br>
+        <label for="hosts">IP Address:</label>
+        <input type="text" name="hosts" id="hosts">
+        <br>
+        <label for="ports">Port Range:</label>
+        <input type="number" name="ports_min" id="ports_min" min="1" max="65535">
+        -
+        <input type="number" name="ports_max" id="ports_max" min="1" max="65535">
+        <br>
+        <input type="submit" value="Create Target">
+    </form>
+</body>
+</html>
