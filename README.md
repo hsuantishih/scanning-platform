@@ -9,8 +9,7 @@ This project is part of the "Key Infrastructure Cybersecurity Talent and Technol
 
 ## System Requirements
 
-- Docker
-- Docker Compose
+- Docker - greenbone
 
 ## Usage
 
