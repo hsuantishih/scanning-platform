@@ -15,4 +15,4 @@ This project is part of the "Key Infrastructure Cybersecurity Talent and Technol
 ## Usage
 
 1. Download and unzip this project
-2. Run gvm_api.py to the program
+2. Run app.py to the program
