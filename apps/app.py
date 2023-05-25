@@ -30,7 +30,7 @@ def send_command(command):
         # 此file object，沒有EOF，觀察XML的最後標籤，判斷break
         if line[0] == '<' and line[1] == '/':
             break
-        elif line[-2] == '>' and line[-3] == '/':
+        elif line[-2] == '>' and line[-3] == '/' and line[0] != ' ':
             break
 
     return response
@@ -53,7 +53,6 @@ def get_version():
         session['target'] = target
         return redirect(url_for("create_target"))
 
-
 @app.route('/create_target', methods=['GET', 'POST'])
 def create_target():
     if request.method == 'GET':
@@ -62,7 +61,7 @@ def create_target():
         session['target_response'] = send_command(target)
         root = ET.fromstring(session['target_response'])
         session['target_id'] = root.get('id')
-        return render_template("create_target.html", target_response=session['target_response'], id=session['target_id'])
+        return render_template("create_target.html", target_response=session['target_response'], target_id=session['target_id'])
     elif request.method == 'POST':
         name = request.form['name']
         target_id = request.form['target_id']
@@ -78,8 +77,8 @@ def create_task():
         session.pop('task', None)
         session['task_response'] = send_command(task)
         root = ET.fromstring(session['task_response'])
-        session['id'] = root.get('id')
-        return render_template('create_task.html', task_response=session['task_response'], id=session['id'])
+        session['task_id'] = root.get('id')
+        return render_template('create_task.html', task_response=session['task_response'], task_id=session['task_id'])
     elif request.method == 'POST':
         task_id = request.form['task_id']
         start_task = "<start_task task_id=\"{}\"/>".format(task_id)
@@ -88,14 +87,37 @@ def create_task():
     
 @app.route('/start_task', methods=['GET', 'POST'])
 def start_task():
-    start_task = session['start_task']
-    session.pop('start_task', None)
-    session['start_task_response'] = send_command(start_task)
-    return render_template('start_task.html', response=session['start_task_response'])
+    if request.method == 'GET':
+        start_task = session['start_task']
+        session.pop('start_task', None)
+        session['start_task_response'] = send_command(start_task)
+        root = ET.fromstring(session['start_task_response'])
+        session['report_id'] = root.find('report_id').text
+        return render_template('start_task.html', response=session['start_task_response'], task_id=session['task_id'])
+    elif request.method == 'POST':
+        task_id = request.form['task_id']
+        get_tasks = "<get_tasks task_id=\"{}\"/>".format(task_id)
+        session['get_tasks'] = get_tasks
+        return redirect(url_for("get_tasks"))
 
-# get_tasks
+@app.route('/get_tasks', methods=['GET', 'POST'])
+def get_tasks():
+    if request.method == 'GET':
+        get_tasks = session['get_tasks']
+        session['get_tasks_response'] = send_command(get_tasks)
+        return render_template('get_tasks.html', response=session['get_tasks_response'], report_id = session['report_id'])
+    elif request.method == 'POST':
+        report_id = request.form['report_id']
+        format_id = request.form['format_id']
+        get_reports = "<get_reports report_id=\"f747cc16-1e55-4fd1-a566-dde7ec56328d\" format_id=\"\"/>".format(report_id)
+        session['get_reports'] = get_reports
+        return redirect(url_for("get_reports"))
 
-# get_reports
+@app.route('/get_reports', methods=['GET', 'POST'])
+def get_reports():
+    get_reports = session['get_reports']
+    session['get_reports_response'] = send_command(get_reports)
+    return render_template('get_reports.html', reponse=session['get_reports_response'])
 
 if __name__ == '__main__':
     app.run()

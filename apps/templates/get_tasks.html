@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Task</title>
+</head>
+<body>
+    <h3>Get Task Response</h3>
+    <pre>{{ response }}</pre>
+    <hr>
+    <h3>Get Report</h3>
+    <form method="post">
+        <label for="report_id">Report_id:</label>
+        <input type="text" name="report_id" id="report_id" value="{{ report_id }}" placeholder="{{ report_id }}">
+        <br>
+        <label for="format_id">Format_id:</label>
+        <select name="format_id">
+            <option value="5057e5cc-b825-11e4-9d0e-28d24461215b">Anonymous XML</option>
+            <option value="c1645568-627a-11e3-a660-406186ea4fc5">CSV Results</option>
+            <option value="77bd6c4a-1f62-11e1-abf0-406186ea4fc5">ITG</option>
+            <option value="c402cc3e-b531-11e1-9163-406186ea4fc5">PDF</option>
+            <option value="a3810a62-1f62-11e1-9219-406186ea4fc5">TXT</option>
+            <option value="a994b278-1f62-11e1-96ac-406186ea4fc5">XML</option>
+        </select>
+        <input type="submit" value="Get Report">
+    </form>
+</body>
+</html>

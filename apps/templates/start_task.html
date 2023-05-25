@@ -10,5 +10,12 @@
     <h3>Start Response</h3>
     <pre>{{ response }}</pre>
     <hr>
+    <h3>Get Task</h3>
+    <form method="post">
+        <label for="task_id">Task_id:</label>
+        <input type="text" name="task_id" id="task_id" value="{{ task_id }}" placeholder="{{ task_id }}">
+        <br>
+        <input type="submit" value="Get Task">
+    </form>
 </body>
 </html>
