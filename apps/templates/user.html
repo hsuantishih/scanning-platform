@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+
+{% if user_id %}
+    <h1>{{ user_id }} exist</h1>
+{% else %}
+    <h1>Input your ID</h1>
+    <br>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.user_id.label(
+            class="form-label"
+        ) }}
+        {{ form.user_id(
+            class="form-control"
+        ) }}
+        {{ form.password.label(
+            class="form-label"
+        ) }}
+        {{ form.password(
+            class="form-control"
+        ) }}
+        <br>
+        {{ form.submit(
+            class="btn btn-secondary"
+        ) }}
+
+    </form>
+
+    <br><br><br>
+
+    {% for user in our_users %}
+        {{ user.user_id }}<br>
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}
