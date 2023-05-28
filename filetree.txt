@@ -1,0 +1,19 @@
+flaskbook/
+├── apps/
+│   ├── app.py
+│   ├── config.py
+│   ├── auth/
+│   │   ├── static
+│   │   └── templates/
+│   │       ├── forms.py
+│   │       ├── models.py
+│   │       └── views.py
+│   └── scanner/
+│       ├── static
+│       └── templates/
+│           ├── forms.py
+│           ├── models.py
+│           └── views.py
+└── migrations
+
+//Generate by https://tree.nathanfriend.io/
