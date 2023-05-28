@@ -1,17 +1,25 @@
-# Key Infrastructure Cybersecurity Talent and Technology Cultivation Program
+# Scanning Platform(Under Development)
 
-This project is part of the "Key Infrastructure Cybersecurity Talent and Technology Cultivation Program", aiming to integrate the open resources provided by Greebone to provide users with more comprehensive vulnerability scanninig capabilities.
+This is a scanning platform that allows users to input information and communicate with Greenbone for scanning purposes. It provides a user-friendly interface and generates reports based on the scan results.
 
 ## Features
 
-- Provide users with more comprehensive vulnerability scanning capabilities
-- Integrate the open resources provided by Greenbone
-
-## System Requirements
-
-- Docker - greenbone
+- User registration and authentication
+- Input form for scan details
+- Integration with Greenbone for scanning
+- Report generation based on scan results
 
 ## Usage
 
-1. Download and unzip this project
-2. Run app.py to the program
+1. Log in.
+2. Fill in the scan details in the provided form.
+3. Submit the form to initiate the scanning process
+4. Check for status of the process
+5. View the generated reported for the scan results.
+
+## Technologies Used
+
+- Python
+- Flask - Web framework
+- SQLAlechemy - MySQL
+- Docker - Greenbone
