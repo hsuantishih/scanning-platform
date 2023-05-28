@@ -16,11 +16,23 @@ To install and run the scanning platform, follow the steps below:
 
     pip install -r requirements.txt
 
-4. Run the Flask development server:
+4. Initialize the database:
+
+    flask db init
+
+5. Create the initial migration:
+
+    flask db migrate
+
+6. Apply the database migrations:
+
+    flask db upgrade
+
+7. Run the Flask development server:
 
     flask run
 
-5. Access the application in web browser
+8. Access the application in web browser
 
 ## Usage(Planned)
 
