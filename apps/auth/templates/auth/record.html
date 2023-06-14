@@ -1,0 +1,49 @@
+{% extends 'auth/base.html' %}
+
+{% block content %}
+
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
+    <h1>Input your Record</h1>
+    <br>
+    <form method="POST">
+    {{ form.hidden_tag() }}
+
+        {{ form.host.label(class="form-label") }}
+        {{ form.host(class="form-control") }}
+        <br>
+        {{ form.submit(class="btn btn-secondary") }}
+    
+    </form>
+
+    <br><br><br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">user_id</th>
+                <th scope="col">host</th>
+                <th scope="col">created_at</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for record in records %}
+            <tr>
+                <th scope="row">{{ record.id }}</th>
+                <td>{{ record.user_id }}</td>
+                <td>{{ record.host }}</td>
+                <td>{{ record.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
